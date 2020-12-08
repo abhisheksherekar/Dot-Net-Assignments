@@ -1,0 +1,71 @@
+/*
+2. Create an array of Employee objects. Convert it to a List<Employee>.  Display all the Employees in the list.
+*/
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Assignment_5
+{
+    class Program
+    {
+      
+        static void Main()
+        {
+            Employees[] arr = new Employees[3];
+            arr[0] = new Employees(1, "RAM", 12500);
+            arr[1] = new Employees(2, "SHAM", 65420);
+            arr[2] = new Employees(3, "SHIV", 24000);
+            
+           List<Employees> li = arr.ToList();//convert array to list 
+
+            foreach (Employees x in li)
+            {
+                Console.WriteLine(x.EMPNO+"  "+x.EMPNAME+ "  "+x.SALARY);
+            }
+
+        }
+       
+
+        class Employees
+        {
+            private int empNo;
+            private string empName;
+            private decimal empSalary;
+            public Employees(int no, string nm, decimal sal)
+            {
+                EMPNO = no;
+                EMPNAME = nm;
+                SALARY = sal;
+            }
+            public int EMPNO
+            {
+                set {
+                    if (value > 0)
+                        empNo = value;
+                    else
+                        Console.WriteLine("Employee no not less than 0.");
+                }
+                get { return empNo; }
+            }
+
+            public string EMPNAME
+            {
+                set
+                {
+                    if (value != "")
+                        empName = value;
+                    else
+                        Console.WriteLine("empName not Blank.");
+                }
+                get { return empName; }
+            }
+
+            public decimal SALARY
+            {
+                set; get;
+            }
+        }
+    }
+}
